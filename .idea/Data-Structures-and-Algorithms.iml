@@ -9,8 +9,9 @@
       <sourceFolder url="file://$MODULE_DIR$/RSAlgorithms-master/model" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RSAlgorithms-master/reader" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RSAlgorithms-master/utility" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.6 (Data-Structures-and-Algorithms)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">

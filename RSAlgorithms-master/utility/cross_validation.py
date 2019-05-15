@@ -19,10 +19,10 @@ def split_5_folds(configx):
     if not os.path.isfile(configx.rating_path):
         print("the format of rating data is wrong")
         sys.exit()
-    df = pd.read_csv(configx.rating_path, sep=configx.sep, names=names)
-    ratings = coo_matrix((df.rating, (df.user_id, df.item_id)))
+    df = pd.read_csv(configx.rating_path, sep=configx.sep, names=names) # 用pandas读取数据集
+    ratings = coo_matrix((df.rating, (df.user_id, df.item_id))) # coo_matrix得到评分矩阵，即user_id行，item_id列存了rating，其余位置皆为0.
     users = np.unique(ratings.row)
-    ratings = ratings.tocsr()
+    ratings = ratings.tocsr() # 得到评分矩阵https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.tocsr.html
 
     rows = list()
     cols = list()

@@ -23,7 +23,7 @@ class ItemCF(MF):
 
     def init_model(self, k):
         super(ItemCF, self).init_model(k)
-        self.item_sim = SimMatrix()
+        self.item_sim = SimMatrix() # 得到物品相似度矩阵
 
         for i_test in self.rg.testSet_i:
             for i_train in self.rg.item:
@@ -44,13 +44,13 @@ class ItemCF(MF):
         #         item_sim[i_train]=sim
 
         matchItems = sorted(self.item_sim[i].items(), key=lambda x: x[1], reverse=True)
-        itemCount = self.config.n
+        itemCount = self.config.n # 最多推荐50个
         if itemCount > len(matchItems):
             itemCount = len(matchItems)
 
         sum, denom = 0, 0
         for n in range(itemCount):
-            similarItem = matchItems[n][0]
+            similarItem = matchItems[n][0] # 与物品i最相似的物品
             if self.rg.containsUserItem(u, similarItem):
                 similarity = matchItems[n][1]
                 rating = self.rg.trainSet_u[u][similarItem]
@@ -70,7 +70,5 @@ if __name__ == '__main__':
     ic = ItemCF()
     ic.init_model(0)
     print(ic.predict_model())
-    print(ic.predict_model_cold_users())
-    ic.init_model(1)
-    print(ic.predict_model())
+    ic.show_rmse()
     print(ic.predict_model_cold_users())
